@@ -1,0 +1,35 @@
+<!-- templates/messenger_app/post_detail.html -->
+
+{% extends "messenger_app/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+<p><strong>Author:</strong> {{ post.author }}</p>
+<p><strong>Created at:</strong> {{ post.created_at }}</p>
+
+<h2>Comments</h2>
+<div id="comments">
+    {% for comment in comments %}
+        <div class="comment">
+            <p>{{ comment.content }}</p>
+            <p><strong>Author:</strong> {{ comment.author }}</p>
+            <p><strong>Created at:</strong> {{ comment.created_at }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% if user.is_authenticated %}
+    <h2>Add a comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add comment</button>
+    </form>
+{% else %}
+    <p>You need to <a href="{% url 'login' %}">login</a> to add a comment.</p>
+{% endif %}
+
+{% endblock %}

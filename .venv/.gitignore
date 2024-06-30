@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+# virtualenv
+venv/
+ENV/
+env/
+info.txt

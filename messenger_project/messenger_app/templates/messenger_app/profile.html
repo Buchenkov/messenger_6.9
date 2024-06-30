@@ -1,0 +1,16 @@
+<!-- templates/messenger_app/profile.html -->
+
+{% extends "messenger_app/base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h1>{{ user.username }}'s Profile</h1>
+<p>First name: {{ user.first_name }}</p>
+<p>Last name: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Bio: {{ user.profile.bio }}</p>
+<p>Location: {{ user.profile.location }}</p>
+<p>Birth date: {{ user.profile.birth_date }}</p>
+<a href="{% url 'edit-profile' %}">Edit Profile</a>
+{% endblock %}

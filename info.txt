@@ -1,0 +1,14 @@
+python manage.py runserver
+python manage.py collectstatic
+
+# Удалите существующую базу данных (убедитесь, что у вас есть резервная копия, если это необходимо)
+rm db.sqlite3
+
+# Удалите миграции вашего приложения
+rm -r messenger_app/migrations
+
+# Создайте новую базу данных и выполните миграции
+python manage.py migrate
+python manage.py makemigrations messenger_app
+python manage.py migrate
+

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'messenger_app/styles.css' %}">
+</head>
+<body>
+    <div id="app">
+        <div id="chat-window"></div>
+        <div id="message-input-container">
+            <input id="message-input" type="text" placeholder="Type your message here...">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="{% static 'messenger_app/script.js' %}"></script>
+</body>
+</html>
