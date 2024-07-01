@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7c61804-760c-4fd5-b9e7-a5f948ccaa86" name="Changes" comment="mess" />
+    <list default="true" id="c7c61804-760c-4fd5-b9e7-a5f948ccaa86" name="Changes" comment="mess++">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +54,7 @@
       <recent name="F:\программы\messenger_6.9\messenger_project\messenger_app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\программы\messenger_6.9" />
       <recent name="F:\программы\messenger_6.9\messenger_project\messenger_app" />
       <recent name="F:\программы\messenger_6.9\messenger_project\messenger_app\static\messenger_app\css" />
       <recent name="F:\программы\messenger_6.9\messenger_project\static" />
@@ -98,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719860883999</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="mess++">
+      <option name="closed" value="true" />
+      <created>1719861717517</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1719861717517</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,6 +126,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-edit, mess" />
     <MESSAGE value="mess" />
-    <option name="LAST_COMMIT_MESSAGE" value="mess" />
+    <MESSAGE value="mess+" />
+    <MESSAGE value="mess++" />
+    <option name="LAST_COMMIT_MESSAGE" value="mess++" />
   </component>
 </project>
