@@ -1,35 +1,38 @@
 <!-- templates/messenger_app/post_detail.html -->
 
 {% extends "messenger_app/base.html" %}
+{% load static %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}Post Detail{% endblock %}
 
 {% block content %}
 <h1>{{ post.title }}</h1>
 <p>{{ post.content }}</p>
-<p><strong>Author:</strong> {{ post.author }}</p>
-<p><strong>Created at:</strong> {{ post.created_at }}</p>
+<p><strong>Author:</strong> {{ post.author.username }}</p>
+
+<hr>
 
 <h2>Comments</h2>
-<div id="comments">
-    {% for comment in comments %}
-        <div class="comment">
-            <p>{{ comment.content }}</p>
-            <p><strong>Author:</strong> {{ comment.author }}</p>
-            <p><strong>Created at:</strong> {{ comment.created_at }}</p>
-        </div>
-    {% endfor %}
-</div>
+{% for comment in comments %}
+    <div class="comment">
+        {% if comment.author.profile.avatar %}
+            <img src="{{ comment.author.profile.avatar.url }}" alt="Avatar" style="width:50px; height:50px;">
+        {% else %}
+            <img src="{% static 'images/default_avatar.jpg' %}" alt="Default Avatar" style="width:50px; height:50px;">
+        {% endif %}
+        <strong>{{ comment.author.username }}</strong>
+        <p>{{ comment.content }}</p>
+    </div>
+{% endfor %}
 
-{% if user.is_authenticated %}
-    <h2>Add a comment</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Add comment</button>
-    </form>
-{% else %}
-    <p>You need to <a href="{% url 'login' %}">login</a> to add a comment.</p>
-{% endif %}
+<hr>
 
+<h2>Add a Comment</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit">Add Comment</button>
+</form>
+
+<a href="{% url 'post_list' %}">Back to Posts</a>
 {% endblock %}

@@ -4,21 +4,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Mессенжер{% endblock %}</title>
+    <title>{% block title %}My Blog{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static ' messenger_app/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static ' messenger_app/css/styles.css'' %}">
 </head>
 <body>
     <header>
+        <h1>My Blog</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'post-list' %}">Home</a></li>
+                <li><a href="{% url 'post_list' %}"> Главная страница </a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'logout' %}">Logout ({{ user.username }})</a></li>
+                    <li><a href="{% url 'post_create' %}">Add Post</a></li>
+                    <li><a href="{% url 'profile' %}">Профиль</a></li>
+                    <li><a href="{% url 'logout' %}">Выход ({{user.username}})</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'register' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}"> Вход </a></li>
+                    <li><a href="{% url 'register' %}"> Регистрация </a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -27,5 +29,8 @@
         {% block content %}
         {% endblock %}
     </main>
+    <footer>
+        <p>&copy; 2024 My Blog</p>
+    </footer>
 </body>
 </html>

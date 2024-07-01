@@ -1,11 +1,14 @@
-<!-- templates/messenger_app/profile.html -->
-
 {% extends "messenger_app/base.html" %}
 
 {% block title %}Profile{% endblock %}
 
 {% block content %}
 <h1>{{ user.username }}'s Profile</h1>
+{% if user.profile.avatar %}
+    <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width:150px; height:150px;">
+{% else %}
+    <img src="{{ STATIC_URL }}images/default_avatar.jpg" alt="Default Avatar" style="width:150px; height:150px;">
+{% endif %}
 <p>First name: {{ user.first_name }}</p>
 <p>Last name: {{ user.last_name }}</p>
 <p>Email: {{ user.email }}</p>

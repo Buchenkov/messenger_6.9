@@ -18,16 +18,11 @@ urlpatterns = [
     path('users/', UserCreateView.as_view(), name='user-create'),
     path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
     path('posts/', PostListCreateView.as_view(), name='post-list-create'),
-    path('posts/<int:pk>/', post_detail, name='post-detail'),
+    path('post/<int:pk>/', views.post_detail, name='post_detail'),
     path('posts/<int:post_id>/comments/', CommentCreateView.as_view(), name='comment-create'),
-    path('', PostListView.as_view(), name='post-list'),
+    path('', PostListView.as_view(), name='post_list'),
     path('profile/', views.profile_view, name='profile'),
     path('profile/edit/', views.edit_profile, name='edit-profile'),
-
+    path('post/create/', views.post_create, name='post_create'),
 ]
-#
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

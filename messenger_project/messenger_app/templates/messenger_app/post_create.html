@@ -1,0 +1,15 @@
+<!-- templates/messenger_app/post_create.html -->
+
+{% extends "messenger_app/base.html" %}
+{% load static %}
+
+{% block title %}Add Post{% endblock %}
+
+{% block content %}
+<h2>Add a New Post</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Post</button>
+</form>
+{% endblock %}

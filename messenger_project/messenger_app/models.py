@@ -7,6 +7,7 @@ class Profile(models.Model):
     bio = models.TextField(blank=True)
     location = models.CharField(max_length=100, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True, default='avatars/default_avatar.jpg')
 
     def __str__(self):
         return self.user.username
@@ -26,7 +27,7 @@ class Message(models.Model):
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=100)
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -41,4 +42,4 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Comment by {self.author} on {self.post}'
+        return f'Comment by {self.author.username} on {self.post.title}'
