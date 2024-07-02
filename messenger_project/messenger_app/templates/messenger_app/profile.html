@@ -3,17 +3,17 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<h1>{{ user.username }}'s Profile</h1>
+<h1>{{ user.username }}</h1>
 {% if user.profile.avatar %}
     <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width:150px; height:150px;">
 {% else %}
     <img src="{{ STATIC_URL }}images/default_avatar.jpg" alt="Default Avatar" style="width:150px; height:150px;">
 {% endif %}
-<p>First name: {{ user.first_name }}</p>
-<p>Last name: {{ user.last_name }}</p>
+<p>Имя: {{ user.first_name }}</p>
+<p>Фамилия: {{ user.last_name }}</p>
 <p>Email: {{ user.email }}</p>
-<p>Bio: {{ user.profile.bio }}</p>
-<p>Location: {{ user.profile.location }}</p>
-<p>Birth date: {{ user.profile.birth_date }}</p>
-<a href="{% url 'edit-profile' %}">Edit Profile</a>
+<p>Биография: {{ user.profile.bio }}</p>
+<p>Место жительства: {{ user.profile.location }}</p>
+<p>Дата рождения: {{ user.profile.birth_date }}</p>
+<a href="{% url 'edit-profile' %}"> Редактировать профиль </a>
 {% endblock %}

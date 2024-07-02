@@ -1,9 +1,12 @@
 from django.contrib.auth.models import User
 from django import forms
-from .models import Post
+from .models import Post, Message, Comment, Profile
 
 
-from .models import Comment, Profile
+class MessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['receiver', 'content']
 
 
 class UserRegistrationForm(forms.ModelForm):

@@ -4,20 +4,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}My Blog{% endblock %}</title>
+    <title>{% block title %} Мессенжер {% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static ' messenger_app/css/styles.css'' %}">
+    <link rel="stylesheet" href="{% static ' messenger_app/css/styles.css' %}">
 </head>
 <body>
     <header>
-        <h1>My Blog</h1>
+        <h1>Мессенжер</h1>
         <nav>
             <ul>
                 <li><a href="{% url 'post_list' %}"> Главная страница </a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'post_create' %}">Add Post</a></li>
-                    <li><a href="{% url 'profile' %}">Профиль</a></li>
-                    <li><a href="{% url 'logout' %}">Выход ({{user.username}})</a></li>
+                    <li><a href="{% url 'post_create' %}"> Добавить сообщение </a></li>
+                    <li><a href="{% url 'user_list' %}"> Пользователи </a></li>
+                    <li><a href="{% url 'inbox' %}"> Почта </a></li>
+                    <li><a href="{% url 'profile' %}"> Профиль </a></li>
+                    <li><a href="{% url 'logout' %}"> Выход ({{user.username}}) </a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}"> Вход </a></li>
                     <li><a href="{% url 'register' %}"> Регистрация </a></li>

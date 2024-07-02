@@ -15,7 +15,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    path('users/', UserCreateView.as_view(), name='user-create'),
+    # path('users/', UserCreateView.as_view(), name='user-create'),
     path('users/<int:pk>/', UserDetailView.as_view(), name='user-detail'),
     path('posts/', PostListCreateView.as_view(), name='post-list-create'),
     path('post/<int:pk>/', views.post_detail, name='post_detail'),
@@ -24,5 +24,8 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),
     path('profile/edit/', views.edit_profile, name='edit-profile'),
     path('post/create/', views.post_create, name='post_create'),
+    path('users/', views.user_list, name='user_list'),
+    path('send_message/<int:user_id>/', views.send_message, name='send_message'),
+    path('inbox/', views.inbox, name='inbox'),
 ]
 

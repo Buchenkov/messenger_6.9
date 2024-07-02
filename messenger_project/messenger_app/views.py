@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import UserRegistrationForm, UserForm, ProfileForm, PostForm
-from rest_framework import generics
 from rest_framework import viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
@@ -17,8 +16,36 @@ from .serializers import PostSerializer, CommentSerializer
 
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
-from .models import Post, Comment, Profile
-from .forms import CommentForm, UserForm, ProfileForm
+from .models import Post, Comment, Profile, Message
+from .forms import CommentForm, UserForm, ProfileForm, MessageForm
+
+
+@login_required
+def user_list(request):
+    users = User.objects.exclude(username=request.user.username)
+    return render(request, 'messenger_app/user_list.html', {'users': users})
+
+
+@login_required
+def send_message(request, user_id):
+    receiver = get_object_or_404(User, id=user_id)
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user
+            message.receiver = receiver
+            message.save()
+            return redirect('inbox')
+    else:
+        form = MessageForm(initial={'receiver': receiver})
+    return render(request, 'messenger_app/send_message.html', {'form': form, 'receiver': receiver})
+
+
+@login_required
+def inbox(request):
+    received_messages = request.user.received_messages.all()
+    return render(request, 'messenger_app/inbox.html', {'messages': received_messages})
 
 
 @login_required
